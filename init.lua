@@ -611,8 +611,6 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
 
-        stylua = {}, -- Used to format Lua code
-
         -- Special Lua Config, as recommended by neovim help docs
         lua_ls = {
           on_init = function(client)
@@ -658,6 +656,7 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         -- You can add other tools here that you want Mason to install
+        'stylua', -- Used to format Lua code (formatter, not an LSP)
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -805,22 +804,29 @@ require('lazy').setup({
     },
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'Mofiqul/dracula.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
+  -- Colorschemes: active one is applied AFTER lazy.setup() returns
+  -- can also live-preview any installed scheme with :Telescope colorscheme.
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000, -- load before other start plugins
+  },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    'sainnhe/everforest',
+    lazy = false,
+    priority = 1000,
     config = function()
-      require('dracula').setup {
-        italic_comment = false,
-      }
-
-      -- Load the colorscheme here.
-      vim.cmd.colorscheme 'dracula'
+      vim.g.everforest_background = 'medium' -- soft|medium|hard
+      vim.g.everforest_better_performance = 1
     end,
   },
+  { 'Mofiqul/dracula.nvim', lazy = false, priority = 1000 },
 
   -- Highlight todo, notes, etc in comments
   {
@@ -884,7 +890,7 @@ require('lazy').setup({
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
     config = function()
       -- ensure basic parser are installed
-      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'python', 'query', 'vim', 'vimdoc' }
       require('nvim-treesitter').install(parsers)
 
       ---@param buf integer
@@ -980,6 +986,16 @@ require('lazy').setup({
     },
   },
 })
+
+-- =====================================================================
+vim.cmd.colorscheme 'tokyonight-night'
+--
+-- Options:
+--   'tokyonight-moon', 'tokyonight-night', 'tokyonight-storm', 'tokyonight-day'
+--   'catppuccin-frappe', 'catppuccin-macchiato', 'catppuccin-mocha', 'catppuccin-latte'
+--   'everforest'
+--   'dracula'
+-- =====================================================================
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
