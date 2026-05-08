@@ -319,6 +319,8 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
+        { '<leader>g', group = '[G]it', mode = { 'n', 'v' } },
+        { '<leader>c', group = '[C]opy' },
         { 'gr', group = 'LSP Actions', mode = { 'n' } },
       },
     },

@@ -30,6 +30,13 @@ Leader key is `<Space>`. Colorscheme: `tokyonight-night`.
 - I use a **Nerd Font** — icons/devicons are fine to enable.
 - **Suggest keymaps** when adding plugins or features, but **don't implement them** unless I explicitly ask. List proposals so I can copy what I want.
 
+## Documentation
+
+- `LEADER_KEYMAPS.md` at the repo root catalogs every `<leader>*` mapping.
+  When you add, remove, or change a leader keymap, **update this file in
+  the same change**. Also register new prefixes in the `which-key` spec
+  in `init.lua` if a group doesn't already exist.
+
 ## Workflow
 
 - **Never run `:Lazy sync`, `:Lazy install`, `:Mason`, etc. for me** — I'll handle plugin install/update after you edit files.
