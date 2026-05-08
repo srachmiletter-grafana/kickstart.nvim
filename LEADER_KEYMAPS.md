@@ -24,6 +24,19 @@ Groups (registered with `which-key` in `init.lua`):
 | `<leader>f`       | n, v | [F]ormat buffer (conform.nvim)            | `init.lua`        |
 | `<leader>b`       | n    | Debug: Toggle Breakpoint                  | `kickstart/plugins/debug.lua` |
 | `<leader>B`       | n    | Debug: Set conditional Breakpoint         | `kickstart/plugins/debug.lua` |
+| `<leader>a`       | n    | Harpoon: [a]dd current file to list       | `custom/plugins/harpoon.lua`  |
+| `<leader>1`       | n    | Harpoon: jump to file 1                   | `custom/plugins/harpoon.lua`  |
+| `<leader>2`       | n    | Harpoon: jump to file 2                   | `custom/plugins/harpoon.lua`  |
+| `<leader>3`       | n    | Harpoon: jump to file 3                   | `custom/plugins/harpoon.lua`  |
+| `<leader>4`       | n    | Harpoon: jump to file 4                   | `custom/plugins/harpoon.lua`  |
+
+Non-leader Harpoon mappings (listed for completeness):
+
+| Keys      | Mode | Action                       | Source                       |
+| --------- | ---- | ---------------------------- | ---------------------------- |
+| `<C-e>`   | n    | Toggle Harpoon quick menu    | `custom/plugins/harpoon.lua` |
+| `<C-S-P>` | n    | Harpoon: prev pin            | `custom/plugins/harpoon.lua` |
+| `<C-S-N>` | n    | Harpoon: next pin            | `custom/plugins/harpoon.lua` |
 
 ## `<leader>s` — Search (Telescope)
 
