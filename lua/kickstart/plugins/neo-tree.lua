@@ -19,7 +19,6 @@ return {
   ---@type neotree.Config
   opts = {
     filesystem = {
-      find_by_full_path_words = true,
       window = {
         mappings = {
           ['\\'] = 'close_window',
