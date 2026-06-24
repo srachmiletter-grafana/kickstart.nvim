@@ -64,11 +64,25 @@ return {
           return
         end
 
-        -- Pick a default branch: prefer 'main', fall back to 'master'.
-        local branch = 'main'
-        if not sh('git -C ' .. vim.fn.shellescape(dir) .. ' show-ref --verify --quiet refs/remotes/origin/main && echo ok') then
-          if sh('git -C ' .. vim.fn.shellescape(dir) .. ' show-ref --verify --quiet refs/remotes/origin/master && echo ok') then
+        -- Determine the remote's default branch.
+        local branch
+        local head_ref = sh('git -C ' .. vim.fn.shellescape(dir) .. ' symbolic-ref --short refs/remotes/origin/HEAD')
+        if head_ref then
+          branch = head_ref:match '^origin/(.+)$'
+        end
+        if not branch then
+          -- Fall back: try to fetch HEAD from the remote, then probe main/master.
+          sh('git -C ' .. vim.fn.shellescape(dir) .. ' remote set-head origin --auto')
+          head_ref = sh('git -C ' .. vim.fn.shellescape(dir) .. ' symbolic-ref --short refs/remotes/origin/HEAD')
+          if head_ref then branch = head_ref:match '^origin/(.+)$' end
+        end
+        if not branch then
+          if sh('git -C ' .. vim.fn.shellescape(dir) .. ' show-ref --verify --quiet refs/remotes/origin/main && echo ok') then
+            branch = 'main'
+          elseif sh('git -C ' .. vim.fn.shellescape(dir) .. ' show-ref --verify --quiet refs/remotes/origin/master && echo ok') then
             branch = 'master'
+          else
+            branch = 'main'
           end
         end
 
@@ -94,7 +108,7 @@ return {
         local opener = (vim.fn.has 'mac' == 1) and 'open' or (vim.fn.has 'wsl' == 1 and 'wslview' or 'xdg-open')
         vim.fn.jobstart({ opener, url }, { detach = true })
       end,
-      desc = '[G]it: open file on [m]ain branch in browser',
+      desc = '[G]it: open file on default branch ([m]ain) in browser',
       silent = true,
     },
     -- Open repo root in browser
