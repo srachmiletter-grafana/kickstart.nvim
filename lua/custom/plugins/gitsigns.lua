@@ -1,5 +1,14 @@
 -- Extend the base gitsigns spec (defined in init.lua / kickstart) with extra opts.
 -- lazy.nvim merges specs that share the same plugin key.
+--
+-- IMPORTANT: do NOT set `keys`, `cmd`, `event`, `ft` here. The base spec is
+-- eager, and adding a lazy trigger via merge would defer gitsigns until that
+-- trigger fires — breaking gutter signs and `]c`/`[c` on startup.
+--
+-- Also: do NOT define `on_attach` here. Lazy.nvim merges opts tables, but
+-- function fields overwrite rather than compose, so an `on_attach` here would
+-- clobber the one in `lua/kickstart/plugins/gitsigns.lua` (which sets up `]c`,
+-- `[c`, and the `<leader>h*` hunk mappings).
 
 ---@module 'lazy'
 ---@type LazySpec
@@ -16,8 +25,5 @@ return {
     },
     -- format: <author>, <relative time> · <summary>
     current_line_blame_formatter = '<author>, <author_time:%R> · <summary>',
-  },
-  keys = {
-    { '<leader>gb', function() require('gitsigns').toggle_current_line_blame() end, desc = 'Toggle inline git [b]lame' },
   },
 }
