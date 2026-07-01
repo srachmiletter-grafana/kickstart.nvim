@@ -84,10 +84,11 @@ All defined in `kickstart/plugins/gitsigns.lua`.
 | `<leader>hq`  | n    | git hunk [q]uickfix list (this file)                       |
 | `<leader>hQ`  | n    | git hunk [Q]uickfix list (all files in repo)               |
 
-## `<leader>g` — Git (gitlinker + diffview)
+## `<leader>g` — Git (gitlinker + diffview + gitsigns)
 
 | Keys          | Mode | Action                                          | Source                         |
 | ------------- | ---- | ----------------------------------------------- | ------------------------------ |
+| `<leader>gb`  | n    | Toggle inline git [b]lame (current line)        | `custom/plugins/gitsigns.lua`  |
 | `<leader>gy`  | n, v | [Y]ank GitHub URL for current line/range        | `custom/plugins/gitlinker.lua` |
 | `<leader>go`  | n, v | [O]pen current file/line in browser             | `custom/plugins/gitlinker.lua` |
 | `<leader>gm`  | n    | Open file on [m]ain branch in browser           | `custom/plugins/gitlinker.lua` |
