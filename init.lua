@@ -187,7 +187,7 @@ vim.diagnostic.config {
   jump = { float = true },
 }
 
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>S', vim.diagnostic.setloclist, { desc = 'Open diagnostic [S]etloclist (quickfix)' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -317,6 +317,7 @@ require('lazy').setup({
       -- Document existing key chains
       spec = {
         { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
+        { '<leader>q', group = 'Session' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
         { '<leader>g', group = '[G]it', mode = { 'n', 'v' } },
@@ -409,7 +410,7 @@ require('lazy').setup({
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>sf', function() require('telescope').extensions.smart_open.smart_open() end, { desc = '[S]earch [F]iles (frecency)' })
       vim.keymap.set('n', '<leader>sF', function()
         builtin.find_files { hidden = true, no_ignore = true }
       end, { desc = '[S]earch [F]iles (hidden + ignored)' })

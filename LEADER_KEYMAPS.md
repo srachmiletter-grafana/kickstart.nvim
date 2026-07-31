@@ -7,6 +7,7 @@ and tweak.
 Groups (registered with `which-key` in `init.lua`):
 
 - `<leader>s` — **[S]earch** (n, v)
+- `<leader>q` — **Session** (persistence.nvim)
 - `<leader>t` — **[T]oggle**
 - `<leader>h` — **Git [H]unk** (n, v)
 - `<leader>g` — Git (custom; see below)
@@ -20,7 +21,7 @@ Groups (registered with `which-key` in `init.lua`):
 | ----------------- | ---- | ----------------------------------------- | ----------------- |
 | `<leader><leader>`| n    | Find existing buffers (Telescope)         | `init.lua`        |
 | `<leader>/`       | n    | Fuzzily search in current buffer          | `init.lua`        |
-| `<leader>q`       | n    | Open diagnostic [Q]uickfix list           | `init.lua`        |
+| `<leader>S`       | n    | Open diagnostic loclist (quickfix)        | `init.lua`        |
 | `<leader>f`       | n, v | [F]ormat buffer (conform.nvim)            | `init.lua`        |
 | `<leader>b`       | n    | Debug: Toggle Breakpoint                  | `kickstart/plugins/debug.lua` |
 | `<leader>B`       | n    | Debug: Set conditional Breakpoint         | `kickstart/plugins/debug.lua` |
@@ -46,7 +47,7 @@ All defined in `init.lua`.
 | ------------- | ---- | --------------------------------------------------- |
 | `<leader>sh`  | n    | [S]earch [H]elp                                     |
 | `<leader>sk`  | n    | [S]earch [K]eymaps                                  |
-| `<leader>sf`  | n    | [S]earch [F]iles                                    |
+| `<leader>sf`  | n    | [S]earch [F]iles (frecency, smart-open)             |
 | `<leader>sF`  | n    | [S]earch [F]iles (incl. hidden/ignored)             |
 | `<leader>ss`  | n    | [S]earch [S]elect Telescope pickers                 |
 | `<leader>sw`  | n, v | [S]earch current [W]ord                             |
@@ -57,6 +58,17 @@ All defined in `init.lua`.
 | `<leader>s.`  | n    | [S]earch recent files (oldfiles)                    |
 | `<leader>sc`  | n    | [S]earch [C]ommands                                 |
 | `<leader>sn`  | n    | [S]earch [N]eovim config files                      |
+
+## `<leader>q` — Session (persistence.nvim)
+
+All defined in `custom/plugins/persistence.lua`.
+
+| Keys          | Mode | Action                                    |
+| ------------- | ---- | ----------------------------------------- |
+| `<leader>qs`  | n    | Restore session for cwd                   |
+| `<leader>ql`  | n    | Restore last session                      |
+| `<leader>qd`  | n    | Don't save session on exit                |
+| `<leader>qS`  | n    | [S]elect session from list                |
 
 ## `<leader>t` — Toggle
 
