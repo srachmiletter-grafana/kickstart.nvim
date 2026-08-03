@@ -100,6 +100,7 @@ All defined in `kickstart/plugins/gitsigns.lua`.
 
 | Keys          | Mode | Action                                          | Source                         |
 | ------------- | ---- | ----------------------------------------------- | ------------------------------ |
+| `<leader>gs`  | n    | [G]it [S]tatus — changed files (Telescope)      | `init.lua`                     |
 | `<leader>gy`  | n, v | [Y]ank GitHub URL for current line/range        | `custom/plugins/gitlinker.lua` |
 | `<leader>go`  | n, v | [O]pen current file/line in browser             | `custom/plugins/gitlinker.lua` |
 | `<leader>gm`  | n    | Open file on [m]ain branch in browser           | `custom/plugins/gitlinker.lua` |
